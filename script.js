@@ -1,29 +1,38 @@
 // script.js
-const card      = document.getElementById('card');
-const modal     = document.getElementById('modal');
-const openBtn   = document.getElementById('openBtn');
-const closeBtn  = document.getElementById('closeBtn');
-const form      = document.getElementById('rsvpForm');
-const lightbox  = document.getElementById('lightbox');
-const mainImg   = document.getElementById('mainImg');
-const phone     = '+5493329627578';
+const card       = document.getElementById('card');
+const modal      = document.getElementById('modal');
+const openBtn    = document.getElementById('openBtn');
+const closeBtn   = document.getElementById('closeBtn');
+const form       = document.getElementById('rsvpForm');
+const lightbox   = document.getElementById('lightbox');
+const mainImg    = document.getElementById('mainImg');
+const phone      = '+5493329627578';
+
+/* MAPA */
+const mapBtn     = document.getElementById('mapBtn');
+const mapModal   = document.getElementById('mapModal');
+const closeMapBtn= document.getElementById('closeMapBtn');
 
 /* Intro */
 window.addEventListener('load', () =>
   setTimeout(() => card.classList.remove('opacity-0', 'scale-90'), 100)
 );
 
-/* Modal */
+/* Modal Confirmar */
 openBtn.onclick   = () => modal.classList.remove('hidden');
 closeBtn.onclick  = () => modal.classList.add('hidden');
 modal.onclick     = e => e.target === modal && modal.classList.add('hidden');
+
+/* Modal Mapa */
+mapBtn.onclick      = () => mapModal.classList.remove('hidden');
+closeMapBtn.onclick = () => mapModal.classList.add('hidden');
+mapModal.onclick    = e => e.target === mapModal && mapModal.classList.add('hidden');
 
 /* Enviar */
 form.onsubmit = e => {
   e.preventDefault();
   const d = new FormData(form);
 
-  /* 🎉 Confetti pastel */
   confetti({
     particleCount: 120,
     spread: 70,
@@ -50,9 +59,15 @@ form.onsubmit = e => {
   }, 1100);
 };
 
-/* Zoom */
+/* Zoom img */
 mainImg.onclick  = () => lightbox.classList.remove('hidden');
 lightbox.onclick = () => lightbox.classList.add('hidden');
-document.addEventListener('keydown', e =>
-  e.key === 'Escape' && lightbox.classList.add('hidden')
-);
+
+/* Escape key: cierra modales */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    modal.classList.add('hidden');
+    lightbox.classList.add('hidden');
+    mapModal.classList.add('hidden');
+  }
+});

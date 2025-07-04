@@ -38,20 +38,18 @@
     </button>
 
     <!-- Cómo llegar -->
-    <a href="https://www.google.com/maps/search/?api=1&query=25+de+Mayo+1810,+Calle+2900"
-       target="_blank" rel="noopener"
-       class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full
-              text-white font-semibold shadow-lg hover:scale-105 transition
-              bg-gradient-to-r from-[#c48d8f] to-[#d6b48a]">
-      <!-- Ícono de pin -->
+    <button id="mapBtn"
+      class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full
+             text-white font-semibold shadow-lg hover:scale-105 transition
+             bg-gradient-to-r from-[#c48d8f] to-[#d6b48a]">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
       </svg>
       Cómo llegar
-    </a>
+    </button>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal Confirmar -->
   <div id="modal"
        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <form id="rsvpForm"
@@ -93,7 +91,22 @@
     </form>
   </div>
 
-  <!-- Lightbox -->
+  <!-- Modal MAPA -->
+  <div id="mapModal"
+       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
+    <div class="relative w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-xl">
+      <!-- Close -->
+      <button id="closeMapBtn"
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl z-10">✕</button>
+      <!-- Iframe -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6552.011340595909!2d-58.27985!3d-34.8057992!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32998a39e8177%3A0x3645cd390aa40d28!2sSal%C3%B3n%20Don%20Santiago!5e0!3m2!1ses-419!2sar!4v1751644628242!5m2!1ses-419!2sar"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <!-- Lightbox Zoom img -->
   <div id="lightbox"
        class="fixed inset-0 bg-black/90 flex items-center justify-center p-4 hidden z-50">
     <img src="invitation.jpg" alt="Zoom invitación"

@@ -8,6 +8,9 @@
   <!-- Tailwind vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <!-- Keyframes personalizados -->
   <style>
     @keyframes float {
@@ -46,18 +49,26 @@
         Confirmá tu asistencia
       </h2>
 
-      <input required name="nombre"      placeholder="Nombre completo*"
+      <input required name="nombre" placeholder="Nombre completo*"
              class="w-full border rounded-lg p-3" />
+
       <select required name="asistencia"
               class="w-full border rounded-lg p-3">
         <option value="">¿Asistirás?</option>
         <option>Asistiré</option>
         <option>No podré ir</option>
       </select>
+
       <input type="number" min="0" name="acompanantes"
              placeholder="¿Cuántos acompañantes?" class="w-full border rounded-lg p-3" />
+
+      <!-- NUEVO: menú especial -->
+      <input name="menu" placeholder="Menú especial / restricciones (opcional)"
+             class="w-full border rounded-lg p-3" />
+
       <textarea name="mensaje" rows="2" placeholder="Mensaje para Geraldine (opcional)"
                 class="w-full border rounded-lg p-3"></textarea>
+
       <input name="contacto" placeholder="Teléfono (WhatsApp)"
              class="w-full border rounded-lg p-3" />
 

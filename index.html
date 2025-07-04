@@ -15,7 +15,6 @@
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   </style>
 
-  <!-- Fuente manuscrita -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-[#fdf9f4] flex flex-col items-center justify-center p-6">
@@ -29,12 +28,28 @@
          class="w-full h-auto object-cover cursor-zoom-in select-none" />
   </div>
 
-  <!-- Botón -->
-  <button id="openBtn"
-    class="mt-8 px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition
-           bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
-    Confirmar asistencia
-  </button>
+  <!-- Botones -->
+  <div class="mt-8 flex flex-col gap-4 w-full max-w-xs">
+    <!-- Confirmar -->
+    <button id="openBtn"
+      class="w-full px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition
+             bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
+      Confirmar asistencia
+    </button>
+
+    <!-- Cómo llegar -->
+    <a href="https://www.google.com/maps/search/?api=1&query=25+de+Mayo+1810,+Calle+2900"
+       target="_blank" rel="noopener"
+       class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full
+              text-white font-semibold shadow-lg hover:scale-105 transition
+              bg-gradient-to-r from-[#c48d8f] to-[#d6b48a]">
+      <!-- Ícono de pin -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
+      </svg>
+      Cómo llegar
+    </a>
+  </div>
 
   <!-- Modal -->
   <div id="modal"

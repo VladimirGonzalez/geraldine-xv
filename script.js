@@ -8,39 +8,38 @@ const lightbox  = document.getElementById('lightbox');
 const mainImg   = document.getElementById('mainImg');
 const phone     = '+5493329627578';
 
-/* Animación de entrada */
-window.addEventListener('load', () => {
-  setTimeout(() => card.classList.remove('opacity-0', 'scale-90'), 100);
-});
+/* Intro */
+window.addEventListener('load', () =>
+  setTimeout(() => card.classList.remove('opacity-0', 'scale-90'), 100)
+);
 
-/* Modal formulario */
+/* Modal */
 openBtn.onclick   = () => modal.classList.remove('hidden');
 closeBtn.onclick  = () => modal.classList.add('hidden');
-modal.onclick     = e => { if (e.target === modal) modal.classList.add('hidden'); };
+modal.onclick     = e => e.target === modal && modal.classList.add('hidden');
 
-/* Enviar a WhatsApp + confetti */
+/* Enviar */
 form.onsubmit = e => {
   e.preventDefault();
-  const data = new FormData(form);
+  const d = new FormData(form);
 
-  // 🎉 Confetti burst
+  /* 🎉 Confetti pastel */
   confetti({
     particleCount: 120,
     spread: 70,
-    origin: { y: 0.6 }
+    origin: { y: 0.6 },
+    colors: ['#d6b48a', '#c48d8f', '#f2e6d8']
   });
 
-  // Mensaje WhatsApp
   const text =
     `🎉 *Confirmación – XV Geraldine*\n\n` +
-    `*Nombre:* ${data.get('nombre')}\n` +
-    `*Asistencia:* ${data.get('asistencia')}\n` +
-    `*Acompañantes:* ${data.get('acompanantes') || '0'}\n` +
-    `*Menú especial:* ${data.get('menu') || '—'}\n` +
-    `*Mensaje:* ${data.get('mensaje') || '—'}\n` +
-    `*Contacto:* ${data.get('contacto') || '—'}`;
+    `*Nombre:* ${d.get('nombre')}\n` +
+    `*Asistencia:* ${d.get('asistencia')}\n` +
+    `*Acompañantes:* ${d.get('acompanantes') || '0'}\n` +
+    `*Menú especial:* ${d.get('menu') || '—'}\n` +
+    `*Mensaje:* ${d.get('mensaje') || '—'}\n` +
+    `*Contacto:* ${d.get('contacto') || '—'}`;
 
-  // Pequeña pausa para que se vea el confetti
   setTimeout(() => {
     window.open(
       `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`,
@@ -48,12 +47,12 @@ form.onsubmit = e => {
     );
     modal.classList.add('hidden');
     form.reset();
-  }, 1100); // 1,1 s
+  }, 1100);
 };
 
-/* Lightbox zoom */
-mainImg.onclick       = () => lightbox.classList.remove('hidden');
-lightbox.onclick      = () => lightbox.classList.add('hidden');
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') lightbox.classList.add('hidden');
-});
+/* Zoom */
+mainImg.onclick  = () => lightbox.classList.remove('hidden');
+lightbox.onclick = () => lightbox.classList.add('hidden');
+document.addEventListener('keydown', e =>
+  e.key === 'Escape' && lightbox.classList.add('hidden')
+);

@@ -8,21 +8,17 @@
   <!-- Tailwind vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Confetti CDN -->
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Keyframes personalizados -->
   <style>
-    @keyframes float {
-      0%,100% { transform: translateY(0) }
-      50%     { transform: translateY(-10px) }
-    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   </style>
 
-  <!-- Fuente cursiva -->
+  <!-- Fuente manuscrita -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-pink-50 flex flex-col items-center justify-center p-6">
+<body class="min-h-screen bg-[#fdf9f4] flex flex-col items-center justify-center p-6">
 
   <!-- Tarjeta -->
   <div id="card"
@@ -35,17 +31,17 @@
 
   <!-- Botón -->
   <button id="openBtn"
-    class="mt-8 px-8 py-4 rounded-full bg-gradient-to-r from-amber-400 to-pink-400
-           text-white font-semibold shadow-lg hover:scale-105 transition">
+    class="mt-8 px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition
+           bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
     Confirmar asistencia
   </button>
 
-  <!-- Modal formulario -->
+  <!-- Modal -->
   <div id="modal"
        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
     <form id="rsvpForm"
       class="bg-white rounded-2xl w-full max-w-md p-8 space-y-5 relative">
-      <h2 class="text-2xl font-bold text-center text-pink-500 mb-4">
+      <h2 class="text-2xl font-bold text-center text-[#c48d8f] mb-4">
         Confirmá tu asistencia
       </h2>
 
@@ -62,7 +58,6 @@
       <input type="number" min="0" name="acompanantes"
              placeholder="¿Cuántos acompañantes?" class="w-full border rounded-lg p-3" />
 
-      <!-- NUEVO: menú especial -->
       <input name="menu" placeholder="Menú especial / restricciones (opcional)"
              class="w-full border rounded-lg p-3" />
 
@@ -73,20 +68,17 @@
              class="w-full border rounded-lg p-3" />
 
       <button type="submit"
-              class="w-full py-3 rounded-full bg-gradient-to-r from-amber-400 to-pink-400
-                     text-white font-semibold shadow-md hover:scale-105 transition">
+              class="w-full py-3 rounded-full text-white font-semibold shadow-md hover:scale-105 transition
+                     bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
         Enviar confirmación
       </button>
 
-      <!-- Cerrar -->
       <button type="button" id="closeBtn"
-        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">
-        ✕
-      </button>
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">✕</button>
     </form>
   </div>
 
-  <!-- Lightbox para zoom -->
+  <!-- Lightbox -->
   <div id="lightbox"
        class="fixed inset-0 bg-black/90 flex items-center justify-center p-4 hidden z-50">
     <img src="invitation.jpg" alt="Zoom invitación"

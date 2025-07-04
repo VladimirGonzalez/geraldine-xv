@@ -1,118 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mis 15 – Geraldine 🎉</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/corazon.png" type="image/png" />
+    <!-- ← Favicon -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mis 15 – Geraldine 🎉</title>
 
-  <!-- Tailwind vía CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind vía CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <style>
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-  </style>
+    <style>
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-</head>
-<body class="min-h-screen bg-[#fdf9f4] flex flex-col items-center justify-center p-6">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="min-h-screen bg-[#fdf9f4] flex flex-col items-center justify-center p-6"
+  >
+    <!-- Tarjeta -->
+    <div
+      id="card"
+      class="relative max-w-md w-full rounded-[40px] shadow-2xl overflow-hidden animate-[float_6s_ease-in-out_infinite] opacity-0 scale-90 transition-all duration-700"
+    >
+      <img
+        id="mainImg"
+        src="invitation.jpg"
+        alt="Invitación Geraldine"
+        class="w-full h-auto object-cover cursor-zoom-in select-none"
+      />
+    </div>
 
-  <!-- Tarjeta -->
-  <div id="card"
-       class="relative max-w-md w-full rounded-[40px] shadow-2xl overflow-hidden
-              animate-[float_6s_ease-in-out_infinite] opacity-0 scale-90
-              transition-all duration-700">
-    <img id="mainImg" src="invitation.jpg" alt="Invitación Geraldine"
-         class="w-full h-auto object-cover cursor-zoom-in select-none" />
-  </div>
-
-  <!-- Botones -->
-  <div class="mt-8 flex flex-col gap-4 w-full max-w-xs">
-    <!-- Confirmar -->
-    <button id="openBtn"
-      class="w-full px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition
-             bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
-      Confirmar asistencia
-    </button>
-
-    <!-- Cómo llegar -->
-    <button id="mapBtn"
-      class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full
-             text-white font-semibold shadow-lg hover:scale-105 transition
-             bg-gradient-to-r from-[#c48d8f] to-[#d6b48a]">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/>
-      </svg>
-      Cómo llegar
-    </button>
-  </div>
-
-  <!-- Modal Confirmar -->
-  <div id="modal"
-       class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <form id="rsvpForm"
-      class="bg-white rounded-2xl w-full max-w-md p-8 space-y-5 relative">
-      <h2 class="text-2xl font-bold text-center text-[#c48d8f] mb-4">
-        Confirmá tu asistencia
-      </h2>
-
-      <input required name="nombre" placeholder="Nombre completo*"
-             class="w-full border rounded-lg p-3" />
-
-      <select required name="asistencia"
-              class="w-full border rounded-lg p-3">
-        <option value="">¿Asistirás?</option>
-        <option>Asistiré</option>
-        <option>No podré ir</option>
-      </select>
-
-      <input type="number" min="0" name="acompanantes"
-             placeholder="¿Cuántos acompañantes?" class="w-full border rounded-lg p-3" />
-
-      <input name="menu" placeholder="Menú especial / restricciones (opcional)"
-             class="w-full border rounded-lg p-3" />
-
-      <textarea name="mensaje" rows="2" placeholder="Mensaje para Geraldine (opcional)"
-                class="w-full border rounded-lg p-3"></textarea>
-
-      <input name="contacto" placeholder="Teléfono (WhatsApp)"
-             class="w-full border rounded-lg p-3" />
-
-      <button type="submit"
-              class="w-full py-3 rounded-full text-white font-semibold shadow-md hover:scale-105 transition
-                     bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]">
-        Enviar confirmación
+    <!-- Botones -->
+    <div class="mt-8 flex flex-col gap-4 w-full max-w-xs">
+      <!-- Confirmar -->
+      <button
+        id="openBtn"
+        class="w-full px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]"
+      >
+        Confirmar asistencia
       </button>
 
-      <button type="button" id="closeBtn"
-        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">✕</button>
-    </form>
-  </div>
-
-  <!-- Modal MAPA -->
-  <div id="mapModal"
-       class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50">
-    <div class="relative w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-xl">
-      <!-- Close -->
-      <button id="closeMapBtn"
-        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl z-10">✕</button>
-      <!-- Iframe -->
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6552.011340595909!2d-58.27985!3d-34.8057992!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32998a39e8177%3A0x3645cd390aa40d28!2sSal%C3%B3n%20Don%20Santiago!5e0!3m2!1ses-419!2sar!4v1751644628242!5m2!1ses-419!2sar"
-        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <!-- Cómo llegar -->
+      <button
+        id="mapBtn"
+        class="w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition bg-gradient-to-r from-[#c48d8f] to-[#d6b48a]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"
+          />
+        </svg>
+        Cómo llegar
+      </button>
     </div>
-  </div>
 
-  <!-- Lightbox Zoom img -->
-  <div id="lightbox"
-       class="fixed inset-0 bg-black/90 flex items-center justify-center p-4 hidden z-50">
-    <img src="invitation.jpg" alt="Zoom invitación"
-         class="max-h-full max-w-full cursor-zoom-out object-contain" />
-  </div>
+    <!-- Modal Confirmar -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 hidden"
+    >
+      <form
+        id="rsvpForm"
+        class="bg-white rounded-2xl w-full max-w-md p-8 space-y-5 relative"
+      >
+        <h2 class="text-2xl font-bold text-center text-[#c48d8f] mb-4">
+          Confirmá tu asistencia
+        </h2>
 
-  <script src="script.js"></script>
-</body>
+        <input
+          required
+          name="nombre"
+          placeholder="Nombre completo*"
+          class="w-full border rounded-lg p-3"
+        />
+
+        <select required name="asistencia" class="w-full border rounded-lg p-3">
+          <option value="">¿Asistirás?</option>
+          <option>Asistiré</option>
+          <option>No podré ir</option>
+        </select>
+
+        <input
+          type="number"
+          min="0"
+          name="acompanantes"
+          placeholder="¿Cuántos acompañantes?"
+          class="w-full border rounded-lg p-3"
+        />
+
+        <input
+          name="menu"
+          placeholder="Menú especial / restricciones (opcional)"
+          class="w-full border rounded-lg p-3"
+        />
+
+        <textarea
+          name="mensaje"
+          rows="2"
+          placeholder="Mensaje para Geraldine (opcional)"
+          class="w-full border rounded-lg p-3"
+        ></textarea>
+
+        <input
+          name="contacto"
+          placeholder="Teléfono (WhatsApp)"
+          class="w-full border rounded-lg p-3"
+        />
+
+        <button
+          type="submit"
+          class="w-full py-3 rounded-full text-white font-semibold shadow-md hover:scale-105 transition bg-gradient-to-r from-[#d6b48a] to-[#c48d8f]"
+        >
+          Enviar confirmación
+        </button>
+
+        <button
+          type="button"
+          id="closeBtn"
+          class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl"
+        >
+          ✕
+        </button>
+      </form>
+    </div>
+
+    <!-- Modal MAPA -->
+    <div
+      id="mapModal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden z-50"
+    >
+      <div
+        class="relative w-full max-w-3xl bg-white rounded-2xl overflow-hidden shadow-xl"
+      >
+        <!-- Close -->
+        <button
+          id="closeMapBtn"
+          class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl z-10"
+        >
+          ✕
+        </button>
+        <!-- Iframe -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6552.011340595909!2d-58.27985!3d-34.8057992!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32998a39e8177%3A0x3645cd390aa40d28!2sSal%C3%B3n%20Don%20Santiago!5e0!3m2!1ses-419!2sar!4v1751644628242!5m2!1ses-419!2sar"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Lightbox Zoom img -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 bg-black/90 flex items-center justify-center p-4 hidden z-50"
+    >
+      <img
+        src="invitation.jpg"
+        alt="Zoom invitación"
+        class="max-h-full max-w-full cursor-zoom-out object-contain"
+      />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -6,7 +6,7 @@ const closeBtn  = document.getElementById('closeBtn');
 const form      = document.getElementById('rsvpForm');
 const lightbox  = document.getElementById('lightbox');
 const mainImg   = document.getElementById('mainImg');
-const phone     = '+5493329627578';
+const phone     = '+5491150577860';
 
 /* Animación de entrada */
 window.addEventListener('load', () => {
